@@ -1,0 +1,31 @@
+{
+  "name": "the-contactor",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "~43.0.2",
+<<<<<<< HEAD
+    "expo-status-bar": "~1.1.0",
+=======
+    "expo-asset": "^8.4.3",
+    "expo-file-system": "~13.0.3",
+    "expo-status-bar": "~1.1.0",
+    "file-system": "^2.2.2",
+>>>>>>> c687f103f020b4e346e9c375051b91833048f18a
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-web": "0.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}
