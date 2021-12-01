@@ -6,7 +6,6 @@ import * as FileSystem from 'expo-file-system';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
 const imageDirectory = `${FileSystem.documentDirectory}images`;
 
 function allContacts({ navigation }) {
@@ -38,19 +37,19 @@ function createNewContact({ navigation }) {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 0.8,
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 0.8,
     });
-
+    
     console.log(result);
-
-  
+    
+    
     if (!result.cancelled) {
         setImage(result.uri);
     }
-  };
+};
 
 
   return (
