@@ -1,5 +1,5 @@
 import React from "react"
-import {Box, FlatList, Heading, Avatar, HStack, VStack, Text, Spacer, Center, NativeBaseProvider} from "native-base"
+import {Box, FlatList, Heading, Avatar, HStack, VStack, Text, Spacer} from "native-base"
 
 export const Contacts = () => {
   const data = [
@@ -68,12 +68,14 @@ export const Contacts = () => {
   )
 }
 
-export default () => {
-  return (
-    <NativeBaseProvider>
-      <Center flex={1} px="3">
-        <Contacts />
-      </Center>
-    </NativeBaseProvider>
-  )
-}
+// export default () => {
+//   return (
+//     <NativeBaseProvider>
+//       <Center flex={1} px="3">
+//         <Contacts />
+//       </Center>
+//     </NativeBaseProvider>
+//   )
+// }
+
+export default Contacts;

@@ -5,17 +5,19 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Contacts } from '/src/views/contacts'
+import { Contacts } from './src/views/contacts'
 
 const imageDirectory = `${FileSystem.documentDirectory}images`;
 
 function allContacts({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center'}}>
+      <View style={{ flex: 1, alignItems: 'center'}}>
       <Button
         title="Create new Contact"
         onPress={() => navigation.navigate('New Contact')}
       />
+        <Contacts />
+
     </View>
   );
 }
@@ -84,6 +86,7 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
+
 
 export default function App() {
   return (
