@@ -5,6 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Contacts } from '/src/views/contacts'
 
 const imageDirectory = `${FileSystem.documentDirectory}images`;
 
