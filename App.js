@@ -6,7 +6,6 @@ import * as Location from 'expo-location';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Contacts } from './src/views/contacts'
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -47,7 +46,6 @@ function allContacts({ navigation }) {
         title="Create new Contact"
         onPress={() => navigation.navigate('New Contact')}
       />
-        <Contacts />
 
     </View>
   );
