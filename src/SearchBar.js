@@ -2,70 +2,74 @@ import React, { useState, useEffect } from "react";
 import { View, TextInput, StyleSheet, Keyboard, Button  } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 
+
+
+const customData = require("./contacts.json");
+
 const SearchBar = (props) => {
-    const [ContactNames, setInputName] = useState('');
-    const [PhoneNrs, setPhotoURI] = useState('');
+    const [Contacts, setContacts] = useState(customData.Contacts);
+
+    const [clicked, setClicked] = useState(false);
+    const [SearchContactParams, setSearchContactParams] = useState('');
 
     return(
-        <View style={styles.container}>
+      <View style={styles.container}>
 
-        <View style={props.clicked, styles.searchBarNotClicked, styles.searchBarIsClicked}>
+        <View style={clicked, styles.searchBarNotClicked, styles.searchBarIsClicked}>
 
           {/* search Icon */}
           <Feather name="search" size={20} color="black" style={styles.SearchIconLocation}/>
 
           {/* Input field */}
-          <TextInput style={styles.input} placeholder="Search Contact" value={props.searchPhrase} 
-          onChangeText={props.setSearchPhrase} onFocus={() => {props.setClicked(true);}}/>
-
-          {/* cross Icon, depending on whether the search bar is clicked or not */}
-          {props.clicked && 
-          (<Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {props.setSearchPhrase("")}}/>)}
+          <TextInput style={styles.input} placeholder="Search Contacts" value={SearchContactParams} 
+          onChangeText={setSearchContactParams} onFocus={() => {setClicked(true);}}/>
         </View>
 
-        {/* cancel button, depending on whether the search bar is clicked or not */}
-        {props.clicked && (
-        <View>
-            <Button title="Cancel" onPress={() => {Keyboard.dismiss(); props.setClicked(false);}} />
-        </View>)}
-
+        {/* cancel button, depending on whether the search bar is clicked or not, might not be necessary */}
+        <View style = {styles.ClearButtonBox}>
+            <Button title="Clear" color= "#030714" style = {styles.ClearButton} onPress={() => {Keyboard.dismiss(); setClicked(false); setSearchContactParams('');}} />
+        </View>
+    
       </View>
     )
 }
-
-
 const styles = StyleSheet.create({
     container:{
-      margin: 5,
-      justifyContent: "flex-start",
-      alignItems: "center",
-      flexDirection: "row",
-      width: "90%",
+      margin: 3,
+      width: "100%",
+      flexDirection: "row"
     },
     SearchIconLocation:{
         marginLeft: 1
     },
     searchBarNotClicked: {
-        padding: 10,
+        padding: 7,
         flexDirection: "row",
-        width: "95%",
+        width: "70%",
         backgroundColor: "#d9dbda",
+        alignItems: "flex-end",
         borderRadius: 15,
-        alignItems: "center",
       },
     searchBarIsClicked:{
-        padding: 10,
+        padding: 7,
         flexDirection: "row",
-        width: "80%",
+        width: "70%",
         backgroundColor: "#d9dbda",
         borderRadius: 15,
-        alignItems: "center",
+        alignItems: "flex-end",
         justifyContent: "space-evenly",
     },
     input:{
-        fontSize: 20,
+        fontSize: 15,
         marginLeft: 10,
         width: "90%",
+    },
+    ClearButton :{
+    },
+    ClearButtonBox:{
+        alignItems: "flex-end",
+        marginLeft: 20,
+        marginTop: 3
     }
 });
 
