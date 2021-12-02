@@ -46,7 +46,6 @@ function allContacts({ navigation }) {
         title="Create new Contact"
         onPress={() => navigation.navigate('New Contact')}
       />
-
     </View>
   );
 }
