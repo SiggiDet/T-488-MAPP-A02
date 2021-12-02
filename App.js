@@ -5,6 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import SearchBar from './src/SearchBar';
 
 const imageDirectory = `${FileSystem.documentDirectory}images`;
@@ -88,8 +89,8 @@ function MyStack() {
 export default function App() {
   return (
     <NavigationContainer>
+      <MyStack />
       <SearchBar/>
-      {/* <MyStack /> */}
     </NavigationContainer>
   );
 }
