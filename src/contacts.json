@@ -3,25 +3,25 @@
         {
             "id": 1,
             "name": "Solskjaer",
-            "thumbnailPhoto": "https://images.prismic.io/indiecampers-demo/9f34856d-05da-4afb-832f-d3a36de83b7f_Hero---Kinderdijk.jpg",
+            "Photo": "https://images.prismic.io/indiecampers-demo/9f34856d-05da-4afb-832f-d3a36de83b7f_Hero---Kinderdijk.jpg",
             "PhoneNr": "6987-345"
         },
         {
             "id": 2,
             "name": "Klopp",
-            "thumbnailPhoto": "https://images.prismic.io/indiecampers-demo/9f34856d-05da-4afb-832f-d3a36de83b7f_Hero---Kinderdijk.jpg",
+             "Photo": "https://images.prismic.io/indiecampers-demo/9f34856d-05da-4afb-832f-d3a36de83b7f_Hero---Kinderdijk.jpg",
             "PhoneNr": "5812-389"
         },
         {
             "id": 3,
             "name": "Rangnick",
-            "thumbnailPhoto": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg",
+            "Photo": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg",
             "PhoneNr": "7824-389"
         },
         {
             "id": 4,
             "name": "Tuchel",
-            "thumbnailPhoto": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg",
+            "Photo": "https://images-na.ssl-images-amazon.com/images/I/61fq9A8jEGL._SL1500_.jpg",
             "PhoneNr": "3851-389"
         }
     ]
