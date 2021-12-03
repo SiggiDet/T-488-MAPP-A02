@@ -23,7 +23,7 @@ const DisplayAllContacts = (props) => {
         <View>
             {Contacts.map( 
                 Contacts => {
-                    if (ContainsParam(Contacts.name, props.searchParam) || ContainsParam(Contacts.PhoneNr,props.searchParam))
+                    if (ContainsParam(Contacts.name, props.searchParam) || ContainsParam(Contacts.PhoneNr,props.searchParam || props.searchParam == ''))
                         <DisplayContact/>
                 })}
         </View>
