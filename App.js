@@ -90,6 +90,11 @@ const createNewContact = ({navigation}) => {
       onConName(conName);
       onConNumber(conNumber);
       setImages(result.uri);
+      
+      if (conName == null)
+        onConName("");
+      if (conNumber == null)
+        onConNumber("");
 
       newContact = {
         "name": conName,
