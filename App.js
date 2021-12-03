@@ -6,7 +6,9 @@ import * as Location from 'expo-location';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer, useIsFocused } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ContactDetail from './src/services/detailcontacts';
+import ContactDetail from './src/services/detailsContacts';
+
+import SearchBar from './src/SearchBar';
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -70,8 +72,7 @@ const allContacts = ({navigation}) => {
 
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('View Contact')}>
-
+      <TouchableOpacity title="View Contact" onPress={() => navigation.navigate('View Contact')}>
         <View style={styles.row}>
           <Image source={{ uri: item.imageURI }} style={styles.pic} />
           <View>
@@ -85,7 +86,8 @@ const allContacts = ({navigation}) => {
   }
 
   return (
-      <View style={{ flex: 1, alignItems: 'center'}}>
+    <View style={{ flex: 1, alignItems: 'center'}}>
+      <SearchBar/>
       <Button
         title="Create new Contact"
         onPress={() => navigation.navigate('New Contact')}
