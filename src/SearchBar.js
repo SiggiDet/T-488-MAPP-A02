@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, TextInput, StyleSheet, Keyboard, Button  } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 
-
+import DisplayAllContacts from "./DisplayAllContacts";
 
 const customData = require("./contacts.json");
 
@@ -13,6 +13,8 @@ const SearchBar = (props) => {
     const [SearchContactParams, setSearchContactParams] = useState('');
 
     return(
+      <View>
+
       <View style={styles.container}>
 
         <View style={clicked, styles.searchBarNotClicked, styles.searchBarIsClicked}>
@@ -29,7 +31,11 @@ const SearchBar = (props) => {
         <View style = {styles.ClearButtonBox}>
             <Button title="Clear" color= "#030714" style = {styles.ClearButton} onPress={() => {Keyboard.dismiss(); setClicked(false); setSearchContactParams('');}} />
         </View>
-    
+
+      </View>
+
+      <DisplayAllContacts searchParam = {SearchContactParams}/>
+
       </View>
     )
 }
