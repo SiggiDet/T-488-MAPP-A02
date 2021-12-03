@@ -28,6 +28,10 @@ Here is how: https://docs.github.com/en/github/creating-cloning-and-archiving-re
 
 All required parts of assignment description were implemented. 
 
+#### NOTES
+
+Edit Contact was tried to implement but due to lack of time and difficulty it was not implemented and is instead remained in the following branch: https://github.com/SiggiDet/T-488-MAPP-A02/tree/EditMethod
+
 #### Group Members
 
 | GitLab Username          | Student name                  |
