@@ -131,8 +131,8 @@ const allContacts = ({route, navigation}) => {
 
 const createNewContact = ({navigation}) => {
   const [image, setImages] = useState(null);
-  const [conName, onConName] = React.useState(null);
-  const [conNumber, onConNumber] = React.useState(null);
+  const [conName, onConName] = useState(null);
+  const [conNumber, onConNumber] = useState(null);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({

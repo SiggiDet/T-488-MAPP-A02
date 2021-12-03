@@ -9,7 +9,7 @@ A simple contact app. User is able to add name, number and a contact photo. Cont
 
 #### System setup
 
-Clone the gitlab repository https://github.com/SiggiDet/T-488-MAPP.git to an empty folder on your computer.
+Clone the gitlab repository https://github.com/SiggiDet/T-488-MAPP-A02.git to an empty folder on your computer.
 
 Here is how: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
