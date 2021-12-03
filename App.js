@@ -7,6 +7,7 @@ import * as FileSystem from 'expo-file-system';
 import { NavigationContainer, useIsFocused } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import SearchBar from './src/SearchBar';
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -169,6 +170,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <MyStack />
+      <SearchBar/>
     </NavigationContainer>
   );
 }
