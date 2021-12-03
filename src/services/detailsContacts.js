@@ -4,25 +4,13 @@ import { Image, View, Text, TouchableOpacity, Linking, StyleSheet} from 'react-n
 
 const ContactDetail = ( props ) => {
 
-    console.log("HELLO")
-    console.log(props.route.params.data)
 	return (
-<<<<<<< HEAD
 		<View style={styles.body}>
 			<Image style={styles.profile} source={ {uri: props.route.params.data.imageURI} } />
 			<Text style={styles.name}> {props.route.params.data.name} </Text>
             <Text style={styles.number}> {props.route.params.data.phone} </Text>
 			<TouchableOpacity>
                 <Text onPress={()=>{Linking.openURL(`tel:${props.route.params.data.phone}`); }} style={styles.button}>Call</Text>
-=======
-		<View style={{ flex: 1, alignItems: 'center'}}>
-			<Image style={styles.avatar} source={ {uri: props.route.params.data.imageURI} } />
-			<Text style={styles.name}> {props.route.params.data.name} </Text>
-            <Text style={styles.name}> {props.route.params.data.phone} </Text>
-			<TouchableOpacity
-				onPress={() => { Linking.openURL(`tel:${"555-7777"}`); }}>
-                <Button title="Call" variant="success">Call</Button>
->>>>>>> origin/main
 			</TouchableOpacity>
 		</View>
 	);
@@ -31,16 +19,8 @@ const ContactDetail = ( props ) => {
 export default ContactDetail;
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
 
 	profile: {
-=======
-	header: {
-		backgroundColor: "white",
-		height: 200
-	},
-	avatar: {
->>>>>>> origin/main
 		width: 130,
 		height: 130,
 		borderRadius: 20,
