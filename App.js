@@ -8,6 +8,7 @@ import { NavigationContainer, useIsFocused } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ContactDetail from './src/services/detailsContacts';
 
+
 import SearchBar from './src/SearchBar';
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
@@ -59,20 +60,21 @@ export const getAllContacts = async () => {
 	}));
 }
 
-const allContacts = ({navigation}) => {
+const allContacts = ({route, navigation}) => {
 
   const [allUsers, setContacts] = useState([]);
 
   useEffect(() => {
     (async () => {
       const all_contacts = await getAllContacts()
+  
       setContacts(all_contacts);
-    })();
-  }, [allUsers]);
 
-  checkWhichUser = (objectContact) => {
-    console.log(objectContact)
-  }
+    })();
+  }, [route.params]);
+
+  //console.log(allUsers);
+
 
   renderItem = ({item}) => {
     return (
@@ -91,7 +93,7 @@ const allContacts = ({navigation}) => {
 
   return (
     <View style={{ flex: 1, alignItems: 'center'}}>
-      <SearchBar/>
+      <SearchBar />
       <Button
         title="Create new Contact"
         onPress={() => navigation.navigate('New Contact')}
@@ -137,7 +139,6 @@ const createNewContact = ({navigation}) => {
       await addContact(newContact);
     }
   };
-
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
