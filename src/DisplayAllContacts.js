@@ -23,25 +23,18 @@ function ContainsParam(word, searchParam) {
 }
 
 const DisplayAllContacts = (props) => {
-    const [Contacts, setContacts] = useState(customData.Contacts);
+    const sorted_custom_data =  customData.Contacts.sort( function (one, another) {return one.name.localeCompare(another.name);});
+    const [Contacts, setContacts] = useState(sorted_custom_data);
+
 
     return(
         <View>
             {Contacts.map( 
                 Contacts => {
-                    if (ContainsParam(Contacts.name, props.searchParam))
+                    if (ContainsParam(Contacts.name, props.searchParam) ||props.searchParam == '' || ContainsParam(Contacts.PhoneNr,props.searchParam))
                     {
                         <DisplayContact name = {Contacts.name} phoneNr = {Contacts.PhoneNr} img = {Contacts.Photo}/>
                     }
-                    else if ( ContainsParam(Contacts.PhoneNr,props.searchParam))
-                    {
-                        <DisplayContact name = {Contacts.name} phoneNr = {Contacts.PhoneNr} img = {Contacts.Photo}/>
-                    }
-                    else if (props.searchParam == '')
-                    {
-                        <DisplayContact name = {Contacts.name} phoneNr = {Contacts.PhoneNr} img = {Contacts.Photo}/>
-                    }
-
                 })}
         </View>
     )
