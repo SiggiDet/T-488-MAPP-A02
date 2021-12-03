@@ -1,12 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform, StyleSheet, TextInput, FlatList, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { Button, Image, View, StyleSheet, TextInput, Text, TouchableOpacity, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ContactDetail from './src/services/detailsContacts';
+import ContactDetail from './src/components/detailsContacts';
 import { Feather } from "@expo/vector-icons";
+import * as Permissions from 'expo-permissions';
+
+
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -26,9 +28,9 @@ const setupDirectory = async () => {
 	}
 };
 
-export function makeValidStringForFileName(str) {
-	const validString = str.replace(/\s/g, '')
-	return validString.replace(/[^A-Za-z0-9\s-]/g, '');
+export function validFilename(str) {
+	const newString = str.replace(/\s/g, '')
+	return newString.replace(/[^A-Za-z0-9\s-]/g, '');
 };
 
 export const writeToFile = async (file, newLocation) => {
@@ -38,9 +40,16 @@ export const writeToFile = async (file, newLocation) => {
 
 export const addContact = async contactLocation => {
   await setupDirectory();
-	const fileName = makeValidStringForFileName(contactLocation.name);
-	const contJson = JSON.stringify(contactLocation);
-	await onException(() => writeToFile(contJson, `${contactsDirectory}/${fileName}.json`));
+
+	const fileName = validFilename(contactLocation.name);
+
+	const contJSON = JSON.stringify(contactLocation);
+  const folderSplit = contJSON.split('/');
+  const UUID = folderSplit[folderSplit.length - 1].slice(0, -6);
+  contactLocation["id"] = fileName + "-" + UUID;
+  const mainContJSON = JSON.stringify(contactLocation);
+
+	await onException(() => writeToFile(mainContJSON, `${contactsDirectory}/${fileName}-${UUID}.json`));
 };
 
 const loadContact = async fileName => {
@@ -100,9 +109,9 @@ const allContacts = ({route, navigation}) => {
       />
       {allUsers.map(
         user => {
-          if (ContainsParam(user["name"], SearchContactParams) || SearchContactParams == '' || ContainsParam(user["phone"], SearchContactParams)){
+          if (ContainsParam(user["name"], SearchContactParams) || SearchContactParams == '' || SearchContactParams == ' ' || ContainsParam(user["phone"], SearchContactParams)){
             return(
-              <TouchableOpacity key={user.name} title="View Contact" onPress={() => navigation.navigate('View Contact', {data: user})}>
+              <TouchableOpacity key={user.id} title="View Contact" onPress={() => navigation.navigate('View Contact', {data: user})}>
                 <View style={styles.row}>
                   <Image source={{ uri: user.imageURI }} style={styles.pic} />
                   <View>
@@ -152,6 +161,34 @@ const createNewContact = ({navigation}) => {
     }
   };
 
+  const pickCameraImage = async () => {
+    await Permissions.askAsync(Permissions.CAMERA);
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      base64: true,
+      aspect: [4, 3],
+      quality: 0.8,
+    });
+
+    if (!result.cancelled) {
+      onConName(conName);
+      onConNumber(conNumber);
+      setImages(result.uri);
+
+      newContact = {
+        "name": conName,
+        "phone": conNumber,
+        "imageURI": result.uri
+      }
+
+      navigation.navigate('All Contacts', {
+        newContactObject: newContact
+      });
+
+      await addContact(newContact);
+    }
+  };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <TextInput
@@ -168,7 +205,7 @@ const createNewContact = ({navigation}) => {
         keyboardType="numeric"
       />
       <Button title="Add an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 75, height: 75 }} />}
+      <Button title="Take a photo" onPress={pickCameraImage} />
     </View>
   );
 }
