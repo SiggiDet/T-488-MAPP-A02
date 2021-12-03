@@ -41,9 +41,8 @@ const SearchBar = (props) => {
 }
 const styles = StyleSheet.create({
     container:{
-      margin: 3,
       width: "100%",
-      flexDirection: "row"
+      flexDirection: "row",
     },
     SearchIconLocation:{
         marginLeft: 1
@@ -57,6 +56,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
       },
     searchBarIsClicked:{
+        margin: 15,
         padding: 7,
         flexDirection: "row",
         width: "70%",
@@ -64,6 +64,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: "flex-end",
         justifyContent: "space-evenly",
+        flex: 1, 
+        alignItems: 'center'
     },
     input:{
         fontSize: 15,
@@ -73,9 +75,10 @@ const styles = StyleSheet.create({
     ClearButton :{
     },
     ClearButtonBox:{
-        alignItems: "flex-end",
-        marginLeft: 20,
-        marginTop: 3
+        marginTop: 15,
+        marginBottom: 15,
+        marginRight: 15,
+        alignItems: "flex-end"
     }
 });
 
