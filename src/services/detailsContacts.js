@@ -1,17 +1,16 @@
 import React from 'react';
-import { Button, Image, View, Text, TouchableOpacity, Linking, StyleSheet} from 'react-native';
+import { Image, View, Text, TouchableOpacity, Linking, StyleSheet} from 'react-native';
 
 
-const ContactDetail = ( ) => {
+const ContactDetail = ( props ) => {
 
 	return (
 		<View style={styles.body}>
-			<Image style={styles.profile} source={ {uri: "https://bootdey.com/img/Content/avatar/avatar5.png"} } />
-			<Text style={styles.name}> {"Arnar"} </Text>
-            <Text style={styles.number}> {"555-7777"} </Text>
-			<TouchableOpacity
-				onPress={() => { Linking.openURL(`tel:${"5557777"}`); }}>
-                <Text onPress={()=>{Linking.openURL('tel:5557777');}} style={styles.button}>Call</Text>
+			<Image style={styles.profile} source={ {uri: props.route.params.data.imageURI} } />
+			<Text style={styles.name}> {props.route.params.data.name} </Text>
+            <Text style={styles.number}> {props.route.params.data.phone} </Text>
+			<TouchableOpacity>
+                <Text onPress={()=>{Linking.openURL(`tel:${props.route.params.data.phone}`); }} style={styles.button}>Call</Text>
 			</TouchableOpacity>
 		</View>
 	);

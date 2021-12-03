@@ -4,7 +4,7 @@
 
 ## Assignment 2: Contactor
 
-A simple management tool created in React. Users can create boards that contains lists and each list can contain various tasks to be completed. Every board, list and task can also be edited and deleted.
+A simple contact app. User is able to add name, number and a contact photo. Contacts are listed in a row. Each contact can be clicked to view contact screen. Calling is possible from contact screen.  
 
 
 #### System setup
