@@ -70,9 +70,13 @@ const allContacts = ({navigation}) => {
     })();
   }, [allUsers]);
 
+  checkWhichUser = (objectContact) => {
+    console.log(objectContact)
+  }
+
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity title="View Contact" onPress={() => navigation.navigate('View Contact')}>
+      <TouchableOpacity title="View Contact" onPress={() => navigation.navigate('View Contact', {data: item})}>
         <View style={styles.row}>
           <Image source={{ uri: item.imageURI }} style={styles.pic} />
           <View>

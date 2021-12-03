@@ -2,13 +2,15 @@ import React from 'react';
 import { Button, Image, View, Text, TouchableOpacity, Linking, StyleSheet} from 'react-native';
 
 
-const ContactDetail = ( ) => {
+const ContactDetail = ( props ) => {
 
+    console.log("HELLO")
+    console.log(props.route.params.data)
 	return (
 		<View style={{ flex: 1, alignItems: 'center'}}>
-			<Image style={styles.avatar} source={ {uri: "https://bootdey.com/img/Content/avatar/avatar5.png"} } />
-			<Text style={styles.name}> {"Arnar"} </Text>
-            <Text style={styles.name}> {"555-7777"} </Text>
+			<Image style={styles.avatar} source={ {uri: props.route.params.data.imageURI} } />
+			<Text style={styles.name}> {props.route.params.data.name} </Text>
+            <Text style={styles.name}> {props.route.params.data.phone} </Text>
 			<TouchableOpacity
 				onPress={() => { Linking.openURL(`tel:${"555-7777"}`); }}>
                 <Button title="Call" variant="success">Call</Button>
@@ -20,7 +22,6 @@ const ContactDetail = ( ) => {
 export default ContactDetail;
 
 const styles = StyleSheet.create({
-
 	header: {
 		backgroundColor: "white",
 		height: 200
@@ -35,7 +36,6 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		marginTop: 130
 	},
-
 	body: {
 		flex: 1,
 		marginTop: 60
